@@ -7,35 +7,18 @@
 
 import Foundation
 
-
-
-struct Fizz{
-    static func isDivisible(_ number: Int) -> String {
-        if ((number % 3) == 0) {
-            return "Fizz"
-        }
-        return ""
-    }
+func fizz(_ number: Int) -> String {
+    number.isMultiple(of: 3) ? "Fizz" : ""
 }
 
-struct Buzz{
-    static func isDivisible(_ number: Int) -> String {
-        if ((number % 5) == 0) {
-            return "Buzz"
-        }
-        return ""
-    }
+func buzz(_ number: Int) -> String {
+    number.isMultiple(of: 5) ? "Buzz" : ""
 }
 
-struct Pop{
-   static func isDivisible(_ number: Int) -> String {
-        if ((number % 7) == 0) {
-            return "Pop"
-        }
-        return ""
-    }
+func pop(_ number: Int) -> String {
+    number.isMultiple(of: 7) ? "Pop" : ""
 }
-
+    
 @resultBuilder
 struct DisplayBuilder {
     static func buildBlock(_ components: String...) -> String {
@@ -45,19 +28,14 @@ struct DisplayBuilder {
 
 @DisplayBuilder
 func toFizzBuzzPop(num: Int) -> String{
-    Fizz.isDivisible(num)
-    Buzz.isDivisible(num)
-    Pop.isDivisible(num)
+    fizz(num)
+    buzz(num)
+    pop(num)
 }
 
 print ("Enter your number:")
-func convertToInt(_ input: String) -> Int? {
-    return Int(input)
-}
 
-let input = readLine()
-
-if let intValue = convertToInt(input ?? "tp") {
+if let intValue = Int(readLine() ?? "") {
    print(toFizzBuzzPop(num: intValue))
 } else {
     print("Invalid input type")
